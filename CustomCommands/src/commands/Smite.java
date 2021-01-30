@@ -1,6 +1,7 @@
 package commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,6 +13,7 @@ public class Smite implements CommandExecutor{
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		if(sender.hasPermission("op")) {
 		if(args.length == 0) { //self smite with no input
 		Player player = (Player)sender;
 		player.getWorld().strikeLightning(player.getLocation());
@@ -21,6 +23,9 @@ public class Smite implements CommandExecutor{
 					player.getWorld().strikeLightning(player.getLocation());
 				}
 			}
+		}
+		}else {
+			sender.sendMessage(ChatColor.RED + "you don't have permission to execute this command");
 		}
 		return false;
 	}

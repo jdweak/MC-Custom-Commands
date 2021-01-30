@@ -1,6 +1,7 @@
 package commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -9,6 +10,7 @@ import org.bukkit.entity.Player;
 public class Explode implements CommandExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		if(sender.hasPermission("op")) {
 		if(args.length == 1) { //self explosion
 		Player player = (Player)sender;
 		float x = Float.valueOf(args[0]);
@@ -20,6 +22,9 @@ public class Explode implements CommandExecutor{
 					player.getWorld().createExplosion(player.getLocation(), x);
 			}
 			}
+		}
+		}else {
+			sender.sendMessage(ChatColor.RED + "you don't have permission to execute this command");
 		}
 		return false;
 	}
