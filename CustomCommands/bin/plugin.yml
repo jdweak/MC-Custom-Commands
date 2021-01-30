@@ -1,4 +1,10 @@
 name: CustomCommands
-version: 3.1
+version: 1.0
 author: jdweak
 main: me.jdweak.customCommands.Main
+commands:
+ custom_enchant:
+ location:
+ give_custom_item_prototype:
+ smite:
+ explode:
